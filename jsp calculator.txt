@@ -1,0 +1,64 @@
+calculate JSP FILE :
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h2>Result</h2>
+    <%
+        int num1 = Integer.parseInt(request.getParameter("num1"));
+        int num2 = Integer.parseInt(request.getParameter("num2"));
+        String operator = request.getParameter("operator");
+        int result = 0;
+        switch (operator) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                result = num1 / num2;
+                break;
+            default:
+                break;
+        }
+    %>
+    <p>Result: <%= result %></p>
+    <a href="main.html">Go Back</a>
+</body>
+</html>
+
+
+
+Simple Calculator HTML FILE :
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+    <form action="calculat.jsp" method="post">
+        <input type="number" name="num1" placeholder="Enter first number" required><br><br>
+        <input type="number" name="num2" placeholder="Enter second number" required><br><br>
+        <select name="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select><br><br>
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>

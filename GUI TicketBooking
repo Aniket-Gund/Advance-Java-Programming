@@ -1,0 +1,65 @@
+package gui;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class TicketBooking extends JFrame implements ActionListener {
+    private JTextField nameField;
+    private JTextField ageField;
+    private JButton calculateButton;
+
+    public TicketBooking() {
+        setTitle("Ticket Booking");
+        setSize(300, 150);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(3, 2));
+
+        JLabel nameLabel = new JLabel("Name:");
+        add(nameLabel);
+
+        nameField = new JTextField();
+        add(nameField);
+
+        JLabel ageLabel = new JLabel("Age:");
+        add(ageLabel);
+
+        ageField = new JTextField();
+        add(ageField);
+
+        calculateButton = new JButton("Calculate Ticket Amount");
+        calculateButton.addActionListener(this);
+        add(calculateButton);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new TicketBooking();
+    }
+    public void actionPerformed(ActionEvent e) {
+        String name = nameField.getText();
+        int age = Integer.parseInt(ageField.getText());
+
+        int ticketAmount = calculateTicketAmount(age);
+
+        JFrame resultFrame = new JFrame();
+        resultFrame.setSize(300, 100);
+        resultFrame.setLayout(new FlowLayout());
+        JLabel resultLabel = new JLabel("Ticket Amount for " + name + " is: " + ticketAmount);
+        resultFrame.add(resultLabel);
+        resultFrame.setVisible(true);
+    }
+
+    private int calculateTicketAmount(int age) {
+        int ticketAmount = 100;
+        if (age < 12) {
+            ticketAmount /= 2; // 50% discount for children
+        } else if (age > 60) {
+            ticketAmount -= 20; // $20 discount for seniors
+        }
+        return ticketAmount;
+    }
+}
+

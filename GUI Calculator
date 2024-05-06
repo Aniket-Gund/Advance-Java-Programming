@@ -1,0 +1,78 @@
+package XYZ_1;
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Calculator extends JFrame implements ActionListener {
+    private JTextField num1Field, num2Field;
+    private JButton calculateButton;
+    private JLabel resultLabel;
+
+    public Calculator() {
+        setTitle("Calculator");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(4, 2));
+
+        JLabel num1Label = new JLabel("Enter Number 1:");
+        add(num1Label);
+
+        num1Field = new JTextField();
+        add(num1Field);
+
+        JLabel num2Label = new JLabel("Enter Number 2:");
+        add(num2Label);
+
+        num2Field = new JTextField();
+        add(num2Field);
+
+        calculateButton = new JButton("Calculate");
+        calculateButton.addActionListener(this);
+        add(calculateButton);
+
+        resultLabel = new JLabel("");
+        add(resultLabel);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Calculator();
+    }
+    public void actionPerformed(ActionEvent e) {
+        try {
+            int num1 = Integer.parseInt(num1Field.getText());
+            int num2 = Integer.parseInt(num2Field.getText());
+
+            int factorial1 = factorial(num1);
+            int factorial2 = factorial(num2);
+
+            int addition = num1 + num2;
+            int subtraction = num1 - num2;
+            int multiplication = num1 * num2;
+            double division = (double) num1 / num2;
+
+            String result = "<html>Factorial of " + num1 + " is " + factorial1 + "<br>"
+                    + "Factorial of " + num2 + " is " + factorial2 + "<br>"
+                    + "Addition: " + addition + "<br>"
+                    + "Subtraction: " + subtraction + "<br>"
+                    + "Multiplication: " + multiplication + "<br>"
+                    + "Division: " + division + "</html>";
+
+            resultLabel.setText(result);
+        } catch (NumberFormatException ex) {
+            resultLabel.setText("Invalid input. Please enter valid numbers.");
+        }
+    }
+
+    private int factorial(int n) {
+        if (n == 0)
+            return 1;
+        else
+            return (n * factorial(n - 1));
+    }
+}
+

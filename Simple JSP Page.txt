@@ -5,8 +5,15 @@
 <title>JSP</title>
 </head>
 <body>
-<h1>Advance Java Programming</h1>
+<h1>Happy Advance Java Programming</h1>
 <hr>
-<p><b>My Self Aniket Balasaheb Gund</b></p>
+<table style="width: 50%">
+<tr>
+<td><input type="text" name="Name"/></td>
+</tr>
+
+</table>
+<input type="submit"value="Submit"/>
+
 </body>
 </html>

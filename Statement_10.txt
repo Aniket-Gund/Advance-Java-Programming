@@ -1,0 +1,59 @@
+package XYZ_1;
+
+import java.util.*;
+import java.net.*;
+
+public class Exp_6{
+	
+	public static void main(String [] args) throws Exception{
+		
+		Scanner s= new Scanner(System.in);
+		System.out.println("Operations:\n1.Get Local Host Name\n2.Web Name and Address\n3.Conversion to String");
+		
+		System.out.println("Enter your Choice: ");
+		int num= s.nextInt();
+		
+		switch(num) {
+		
+		case 1:
+			
+			InetAddress add = InetAddress.getLocalHost();
+			System.out.println(add);
+			break;
+			
+		case 2:
+			try {
+			InetAddress IP = InetAddress.getByName("www.google.com");
+			System.out.println("Host Name: "+IP.getHostName());
+			System.out.println("Host Address: "+IP.getHostAddress());
+			
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+			break;
+			
+		case 3:
+			try {
+			InetAddress IP1 = InetAddress.getByName("www.google.com");
+			InetAddress IP2 = InetAddress.getByName("www.whatsapp.com");
+			
+			String s1= IP1.toString();
+			String s2= IP2.toString();
+			
+			System.out.println("String 1: "+s1);
+			System.out.println("String 2: "+s2);
+			
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+			
+			break;
+			
+	  default:
+		  
+		  System.out.println("Invalid Choice!!!");
+		}
+         
+           s.close();
+	}
+}

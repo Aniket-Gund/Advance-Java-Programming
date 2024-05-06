@@ -1,0 +1,53 @@
+package XYZ_1;
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class Exp_2 implements ActionListener, MouseListener{
+	
+	TextField TF;
+	Button B;
+	Frame F;
+	 Exp_2(){
+		 
+		 F= new Frame("Exp 2");
+		 F.setSize(400, 400);
+		 
+		 TF= new TextField();
+		 TF.setBounds(50, 50, 50, 50);
+		 F.add(TF);
+		 
+		 B= new Button("Click");
+		 B.setBounds(10, 10, 30, 50);
+		 F.add(B);
+		 
+		 F.addMouseListener(this);
+		 TF.addActionListener(this);
+		 F.setVisible(true);
+		 F.setLayout(null);
+	 }
+	 
+	 public void MouseClicked(MouseEvent e) {
+		 TF.setText("Clicked");
+	 }
+	 
+	 public void MousePressed(MouseEvent e) {
+		 TF.setText("Clicked");
+	 }
+	 
+	 public void MouseReleased(MouseEvent e) {
+		 TF.setText("Clicked");
+	 }
+	 
+	 public void MouseEntered(MouseEvent e) {
+		 TF.setText("Clicked");
+	 }
+	 
+	 public void MouseExited(MouseEvent e) {
+		 TF.setText("Clicked");
+	 }
+	 
+	 public static void main(String[] args) {
+		 new Exp_2();
+	 }
+}

@@ -1,0 +1,40 @@
+package XYZ_1;
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class Exp_1 extends Frame implements KeyListener {
+TextArea area;
+Label L;
+Exp_1()
+{
+	area = new TextArea();
+	area.setBounds(50, 50, 50, 50);
+	L= new Label("KeyListner Example");
+	L.setBounds(100, 100, 100, 100);
+	area.addKeyListener(this);
+	add(area);
+	add(L);
+	
+	setSize(200,200);
+	setVisible(true);
+	setLayout(null);
+	
+}
+public void keyPressed(KeyEvent e) {
+	L.setText("Key Pressed");
+}
+
+public void keyTyped(KeyEvent e) {
+	L.setText("Key Typed");
+}
+
+public void keyReleased(KeyEvent e) {
+	L.setText("Key Released");
+}
+
+public static void main(String[] args) {
+	new Exp_1();
+}
+
+}

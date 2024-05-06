@@ -1,0 +1,71 @@
+package GUI;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ResultExamGUI extends JFrame {
+    private JTextField[] markFields;
+    private JButton calculateButton;
+
+    public ResultExamGUI() {
+        setTitle("Exam Result Calculator");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(0, 2));
+
+        JLabel[] labels = new JLabel[5];
+        markFields = new JTextField[5];
+
+        labels[0] = new JLabel("Enter marks for Subject 1:");
+        markFields[0] = new JTextField();
+        add(labels[0]);
+        add(markFields[0]);
+
+        labels[1] = new JLabel("Enter marks for Subject 2:");
+        markFields[1] = new JTextField();
+        add(labels[1]);
+        add(markFields[1]);
+
+        labels[2] = new JLabel("Enter marks for Subject 3:");
+        markFields[2] = new JTextField();
+        add(labels[2]);
+        add(markFields[2]);
+
+        labels[3] = new JLabel("Enter marks for Subject 4:");
+        markFields[3] = new JTextField();
+        add(labels[3]);
+        add(markFields[3]);
+
+        labels[4] = new JLabel("Enter marks for Subject 5:");
+        markFields[4] = new JTextField();
+        add(labels[4]);
+        add(markFields[4]);
+
+        calculateButton = new JButton("Calculate Result");
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int totalMarks = 0;
+                for (int i = 0; i < markFields.length; i++) {
+                    totalMarks += Integer.parseInt(markFields[i].getText());
+                }
+                double averageMarks = totalMarks / (double) markFields.length;
+                String result = "Total Marks: " + totalMarks + "\nAverage Marks: " + averageMarks;
+                JOptionPane.showMessageDialog(null, result, "Result", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        add(calculateButton);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new ResultExamGUI();
+            }
+        });
+    }
+}
